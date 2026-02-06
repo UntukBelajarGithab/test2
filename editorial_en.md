@@ -1,0 +1,3 @@
+## B. Belajar Bit 
+Use the identity $N + X = (N \oplus X) + 2(N \& X)$, so the target $(N \oplus X) + (N \& X) = (N + X) - (N \& X)$. This means we want to choose $X$ as large as possible while minimizing the overlap of `1` bits between $N$ and $X$. The optimal strategy is to set `1` bits in $X$ only at positions where the bits of $N$ are `0`, up to the most significant bit (MSB) of $N$. Mathematically, the best candidate is $X = (\sim N) \,\&\, \text{mask}$ with $\text{mask} = (1 \ll (\text{MSB}(N) + 1)) - 1$. If the result is $X = 0$ (the case where $N$ consists of all `1` bits or $N = 2^k - 1$), then the valid answer is $X = 1$. 
+Time complexity: $O(1)$
